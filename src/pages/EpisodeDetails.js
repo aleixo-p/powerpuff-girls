@@ -7,12 +7,14 @@ function EpisodeDetails() {
   const [episodeID, setEpisodeID] = useState(null);
   const [episodeData, setEpisodeData] = useState(null);
 
+  //get the episode id from the url
   useEffect(() => {
     if (window !== undefined) {
       setEpisodeID(new URLSearchParams(window.location.search).get("id"));
     }
   }, []);
 
+  //uses the id to get the episode data
   useEffect(() => {
     if (episodeID !== null) {
       fetch('https://api.tvmaze.com/episodes/' + episodeID)

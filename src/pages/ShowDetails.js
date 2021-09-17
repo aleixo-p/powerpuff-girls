@@ -8,12 +8,14 @@ function ShowDetails() {
   const [showData, setShowData] = useState(null);
   const [episodes, setEpisodes] = useState(null);
 
+  //gets the id  of the show from the url
   useEffect(() => {
     if (window !== undefined) {
       setShowID(new URLSearchParams(window.location.search).get("id"));
     }
   }, []);
 
+  //gets the show's data
   useEffect(() => {
     if (showID !== null) {
       fetch('https://api.tvmaze.com/shows/' + showID)
@@ -21,6 +23,7 @@ function ShowDetails() {
     }
   }, [showID]);
 
+  //gets the show's episode's data
   useEffect(() => {
     if (showData !== null) {
       fetch('https://api.tvmaze.com/shows/' + showData.id + "/episodes")
